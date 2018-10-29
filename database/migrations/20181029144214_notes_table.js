@@ -3,11 +3,10 @@ exports.up = function(knex, Promise) {
         notes.increments();
         notes.string('notes_title').notNullable();
         notes.text('notes_content').notNullable();
-        notes.dateTime('notes_date_made').notNullable();
-        notes.integer('users_id').notNullable().unsigned().references('id').inTable('users');
+        notes.dateTime('notes_date_made');
     });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('notes');
-};
+    return knex.schema.dropTableIfExists('notes');
+  };
