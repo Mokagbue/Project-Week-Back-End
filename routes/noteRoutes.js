@@ -63,7 +63,7 @@ router.delete('/:id', (req,res) => {
         res.status(200).json(count);
       }
     })
-    .catach(error => res.status(500).json({ message: 'failed to delete note.'}));
+    .catch(err => res.status(500).json({ message: 'failed to delete note.', err}));
   }); 
   
   //knex update 
@@ -80,7 +80,7 @@ router.delete('/:id', (req,res) => {
         res.status(200).json(count);
       }
     })
-    .catach(err => res.status(500).json({ message: 'failed to update note.'}));
+    .catch(err => res.status(500).json({ message: 'failed to update note.', err}));
   });
 
   module.exports = router;
