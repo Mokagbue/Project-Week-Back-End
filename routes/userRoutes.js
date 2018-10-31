@@ -37,19 +37,6 @@ router.get('/:id', async (req, res) => {
     }
   });
   
-  //get note by user id
-router.get('/:id/notes', (req, res) => {
-    const { id } = req.params;
-    db('users')
-    .join('notes', 'users.id', '=', 'notes.user_id')
-    .select('users.username as user', 'notes.notes_title')
-    .where('notes.user_id', id)
-    .then(response => {
-      console.log(response)
-      res.status(200).json(response)
-    });
-  });
-
   //knex delete
 router.delete('/:id', (req,res) => {
     const { id } = req.params;
